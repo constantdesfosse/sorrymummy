@@ -24,4 +24,9 @@ class User < ActiveRecord::Base
         user.token_expiry = Time.at(auth.credentials.expires_at)
       end
     end
+
+  def initials
+    "#{self.first_name.first}#{self.last_name.first}"
+  end
+
 end
