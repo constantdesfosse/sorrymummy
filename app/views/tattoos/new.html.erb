@@ -12,8 +12,14 @@
       <% end %>
 
       <%= simple_form_for @tattoo do |f| %>
-        <%= f.input :name, label: "Enter the name of your tattoo", input_html: { placeholder: "Black Flag..." } %>
-        <%= f.input :description, label: "Please give a detailed description of your tattoo" %>
+        <%= f.input :name, label: "Enter the name of your tattoo", input_html: { placeholder: "Black Flag" } %>
+        <%= f.input :description, label: "Please give a detailed description of your tattoo", input_html: { placeholder: "A nice black flag..." } %>
+
+        <%= f.input :category, :as => :select,
+               :label => "Select a Category", :include_blank => true,
+               :collection =>
+               ["Abstract","Animal","Asian","Biomechanical","Cartoon","Celebrities","Celtic","Children","Clown","Cover up","Dot Work","Etching","Fantasy","Female","Figurative","Flash","Floral","Full Body","Geometric","Gothic","Graphic","Horror","Insect","Japanese","Latin","Lettering","Mandala","Neo traditional","New School","Old School","Ornemental","Polynesian","Realistic","Religious","Scarification","Science Fiction","Skull","Tahitian","Traditional","Tribal","Watercolor"] %>
+
         <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>
         <%= f.submit class: "btn btn-primary" %>
