@@ -1,0 +1,33 @@
+.tattooists-card {
+  background-color: white;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 260px;
+  height: 360px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d7d7d7;
+  margin-top: 24px;
+  text-transform: uppercase;
+
+}
+
+.tattooists-card-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 90px;
+  background-color: #25A998;
+  position: relative;
+  top: -45px;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
