@@ -9,8 +9,9 @@ class TattoosController < ApplicationController
   end
   def create
     @tattoo = Tattoo.new(tattoo_params)
+    @tattoo.user_id = current_user.id
     if @tattoo.save
-      redirect_to cocktail_path(@tattoo)
+      redirect_to tattoo_path(@tattoo)
     else
       render :new
     end
@@ -35,10 +36,14 @@ class TattoosController < ApplicationController
     redirect_to :back
   end
 
+  def index
+    @tattoos = Tattoo.all
+  end
+
   private
 
   def tattoo_params
-    params.require(:tattoo).permit(:name, :photo, :description)
+    params.require(:tattoo).permit(:name, :photo, :photo_cache, :description)
   end
 
 end
