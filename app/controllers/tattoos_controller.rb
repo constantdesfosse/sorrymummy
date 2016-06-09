@@ -43,7 +43,7 @@ class TattoosController < ApplicationController
   private
 
   def tattoo_params
-    params.require(:tattoo).permit(:name, :photo, :photo_cache, :description)
+    params.require(:tattoo).permit(:name, :category, :photo, :photo_cache, :description)
   end
 
 end

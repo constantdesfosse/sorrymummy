@@ -6,4 +6,6 @@ class Tattoo < ActiveRecord::Base
 
   mount_uploader :photo, PhotoUploader
 
+  CATEGORY = ['hot', 'medium', 'cold']
+
 end
