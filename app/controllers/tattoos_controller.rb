@@ -1,7 +1,11 @@
 class TattoosController < ApplicationController
 
   def index
-    @tattoos = Tattoos.all
+    if params[:tag].present?
+      @tattoos = Tattoo.tagged_with(params[:tag]).order(created_at: :desc)
+    else
+      @tattoos = Tattoo.all.order(created_at: :desc)
+    end
   end
 
   def new
@@ -33,17 +37,13 @@ class TattoosController < ApplicationController
   def destroy
     @tattoo = Tattoo.find(params[:id])
     @tattoo.destroy
-    redirect_to :back
-  end
-
-  def index
-    @tattoos = Tattoo.all
+    redirect_to tattoos_path
   end
 
   private
 
   def tattoo_params
-    params.require(:tattoo).permit(:name, :category, :photo, :photo_cache, :description)
+    params.require(:tattoo).permit(:name, :category, :photo, :photo_cache, :description, :tag_list)
   end
 
 end

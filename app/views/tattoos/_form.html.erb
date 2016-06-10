@@ -1,0 +1,28 @@
+<div class="container" id="homepage">
+  <div class="row" style="margin-top: 15px">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <% if @tattoo.errors.any? %>
+        <ul>
+          <%@tattoo.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <%= simple_form_for @tattoo do |f| %>
+        <%= f.input :name, label: "Enter the name of your tattoo", input_html: { placeholder: "Black Flag" } %>
+        <%= f.input :description, label: "Please give a detailed description of your tattoo", input_html: { placeholder: "A nice black flag..." } %>
+        <%= f.input :category, :as => :select,
+               :label => "Select a Category", :include_blank => true,
+               :collection =>
+               ["Abstract","Animal","Asian","Biomechanical","Cartoon","Celebrities","Celtic","Children","Clown","Cover up","Dot Work","Etching","Fantasy","Female","Figurative","Flash","Floral","Full Body","Geometric","Gothic","Graphic","Horror","Insect","Japanese","Latin","Lettering","Mandala","Neo traditional","New School","Old School","Ornemental","Polynesian","Realistic","Religious","Scarification","Science Fiction","Skull","Tahitian","Traditional","Tribal","Watercolor"] %>
+        <% f.input :tag_list, label: "Add Tags (Separated by commas)", input_html: { placeholder: "mandala, black, flower, ..." } %>
+        <%= f.label(:tag_list, "Tags* (Seperated by commas)") %><br />
+        <%= f.text_field(:tag_list, value: @tattoo.tag_list.join(", "), class: "form-control")%>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

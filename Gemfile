@@ -19,7 +19,7 @@ gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
 gem 'cloudinary'
 gem 'carrierwave'
-
+gem 'acts-as-taggable-on'
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
