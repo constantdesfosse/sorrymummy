@@ -5,3 +5,4 @@
   </div>
 
 <button><%= link_to 'Edit', edit_tattoo_path(@tattoo)%></button>
+<button><%= link_to 'Delete', tattoo_path(@tattoo), method: :delete, data: {confirm: "Are you sure?"}  %></button>
