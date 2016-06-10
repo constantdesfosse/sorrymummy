@@ -7,8 +7,15 @@
             <%= link_to "", tattoo_path(tattoo), class: "tattoos-card-link" %>
           </div>
           <div class="tattoos-card-header">
-            <h3><%=tattoo.name %></h3>
+
+          <% if tattoo.name.chars.count > 25 %>
+            <h3><%=tattoo.name.chars.take(22).join + "..."  %></h3>
+          <% else %>
+          <h3><%=tattoo.name %></h3>
+          <%end%>
+
             <p><%=tattoo.created_at.strftime("%m/%d/%Y")%></p>
+            <p><%= raw tattoo.tag_list.map { |t| link_to t, tag_path(t) }.join(' - ') %></p>
           </div>
           <div class="tattoos-card-infos">
             <p><%=tattoo.category%></p>
