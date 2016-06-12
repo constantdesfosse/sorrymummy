@@ -1,0 +1,22 @@
+#tag_cloud {
+  text-decoration: none;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 0.8em; }
+  .l { font-size: 0.8em; }
+  & a {
+    color: #272822;
+    text-decoration: none;
+  }
+  & ul {
+    text-align: left;
+    text-decoration: none;
+  }
+  & li {
+    text-decoration: none;
+  }
+}
