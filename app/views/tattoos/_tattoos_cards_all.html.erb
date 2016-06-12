@@ -20,7 +20,7 @@
             </div>
             <div class="tattoos-card-footer">
               <p><%=tattoo.user.first_name.capitalize + " " + tattoo.user.last_name.upcase %></p>
-              <div class="tattoos-card-footer-avatar" style="background-image: url('<%= image_path tattoo.user.picture %>')">
+              <div class="tattoos-card-footer-avatar" style="background-image: url('<%= image_path tattoo.user.choosephoto %>')">
               <a href='/users/<%= tattoo.user.id %>'><span class="tattoos-card-link"></span></a>
               </div>
             </div>

@@ -1,4 +1,4 @@
-class PhotoUploader < CarrierWave::Uploader::Base
+class BanneruserUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   process convert: 'jpg'
@@ -12,3 +12,4 @@ class PhotoUploader < CarrierWave::Uploader::Base
       width: 150, height: 150, crop: :thumb, gravity: :face
   end
 end
+
