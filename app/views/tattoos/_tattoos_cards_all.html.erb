@@ -1,0 +1,28 @@
+<% @tattoos.each do |tattoo| %>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="tattoos-card">
+            <div class="tattoos-card-picture" style="background-image: url('<%= cl_image_path tattoo.photo%>')">
+              <%= link_to "", tattoo_path(tattoo), class: "tattoos-card-link" %>
+            </div>
+            <div class="tattoos-card-header">
+
+            <% if tattoo.name.chars.count > 25 %>
+              <h3><%=tattoo.name.chars.take(22).join + "..."  %></h3>
+            <% else %>
+            <h3><%=tattoo.name %></h3>
+            <%end%>
+
+              <p><%=tattoo.created_at.strftime("%m/%d/%Y")%></p>
+              <p><% raw tattoo.tag_list.map { |t| link_to "#" + t, tag_path(t) }.join(' ') %></p>
+            </div>
+            <div class="tattoos-card-infos">
+              <p><%=tattoo.category%></p>
+            </div>
+            <div class="tattoos-card-footer">
+              <p><%=tattoo.user.first_name.capitalize + " " + tattoo.user.last_name.upcase %></p>
+              <div class="tattoos-card-footer-avatar" style="background-image: url('<%= image_path tattoo.user.picture %>')">
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
