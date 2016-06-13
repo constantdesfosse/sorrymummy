@@ -1,10 +1,20 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters
 
+  def update_resource(resource, params)
+    if current_user.provider == "facebook"
+      params.delete("current_password")
+      resource.update_without_password(params)
+    else
+      resource.update_with_password(params)
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up).push(:first_name, :last_name)
+    devise_parameter_sanitizer.for(:sign_up).push(:first_name, :last_name, :photo, :photo_cache, :banneruser, :banneruser_cache)
+    devise_parameter_sanitizer.for(:account_update).push(:first_name, :last_name, :photo, :photo_cache, :banneruser, :banneruser_cache)
   end
 end
 
@@ -18,7 +28,7 @@ end
 #   def configure_permitted_parameters
 #     devise_parameter_sanitizer.for(:sign_up) do |u|
 #       u.permit(:first_name, :last_name,
-#         :email, :password, :password_confirmation)
+#       :email, :password, :password_confirmation)
 #     end
 #     devise_parameter_sanitizer.for(:account_update) do |u|
 #       u.permit(:first_name,
