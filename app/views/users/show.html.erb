@@ -1,13 +1,25 @@
 <div class="container">
-  <%= image_tag @user.choosephoto %>
-  <h1><%=@user.first_name + " " + @user.last_name%></h1>
-  <%= cl_image_tag @user.banneruser %>
-  <div id="tag_cloud">
+  <div class="tattooist-banner" style="background-image: url('<%= image_path @user.banneruser %>')">
+  </div>
+  <div class="tattooist-banner-footer">
+    <div class="tattooist-banner-avatar" style="background-image: url('<%= image_path @user.choosephoto %>')">
+    </div>
+      <div class="tattooist-banner-name">
+        <p><%=@user.first_name + " " + @user.last_name%></p>
+      </div>
+  </div>
+
+
+
+  <% image_tag @user.choosephoto %>
+    <div id="tag_cloud">
       <% tag_cloud Tattoo.tag_counts, %w[s m l] do |tag, css_class| %>
-    <%= link_to "#" + tag.name, tag_path(tag.name), class: css_class %>
+    <% link_to "#" + tag.name, tag_path(tag.name), class: css_class %>
   <% end %>
   </div>
 
+<!-- Display Users Tattoos -->
+<h3> Tattoos (<%=@user.tattoos.count %>) </h3>
   <% @user.tattoos.each do |tattoo| %>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
       <div class="tattoos-card">
@@ -36,4 +48,6 @@
       </div>
     </div>
   <% end %>
+<!-- End Display Users Tattoos -->
+
 <div>
