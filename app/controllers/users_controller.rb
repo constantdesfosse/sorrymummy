@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.where(provider: nil).order(created_at: :desc)
+    @users = User.all
+
+    #.where(provider: nil).order(created_at: :desc)
 
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
       marker.lat user.latitude
