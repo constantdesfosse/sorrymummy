@@ -37,9 +37,10 @@
           markers = handler.addMarkers(<%= raw @markers.to_json %>);
           handler.bounds.extendWith(markers);
           handler.fitMapToBounds();
-          handler.getMap().setZoom(2);
+          handler.getMap().setZoom(4);
         });
       })
   </script>
 <% end %>
+
 
