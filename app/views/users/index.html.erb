@@ -24,23 +24,16 @@
 </div>
 
 <% content_for(:after_js) do %>
-  <script>
+  <%= javascript_tag do %>
     $(document).on('ready', function() {
       handler = Gmaps.build('Google');
-
-       handler.buildMap({
-          provider: {
-            scrollwheel: false,
-            styles: mapStyle
-          },
-          internal: { id: 'map' } }, function(){
-          markers = handler.addMarkers(<%= raw @markers.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          // handler.getMap().setZoom(4);
-        });
-      })
-  </script>
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    })
+  <% end %>
 <% end %>
 
 
