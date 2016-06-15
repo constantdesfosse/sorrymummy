@@ -11,6 +11,8 @@
           <%= f.input :email, required: true, autofocus: true %>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
+          <%= f.input :address, input_html: { id: :user_input_autocomplete_address } %>
+          <%= f.input :city, input_html: { id: :locality }, as: :hidden %>
           <%= f.input :photo %>
           <%= f.input :photo_cache, as: :hidden %>
           <%= f.input :banneruser %>

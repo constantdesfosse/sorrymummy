@@ -1,0 +1,92 @@
+Searching 137 files for "provider"
+
+/Users/constantdesfosse/code/constantdesfosse/sorrymummy/app/controllers/users/registrations_controller.rb:
+    3
+    4    def update_resource(resource, params)
+    5:     if current_user.provider == "facebook"
+    6        params.delete("current_password")
+    7        resource.update_without_password(params)
+
+/Users/constantdesfosse/code/constantdesfosse/sorrymummy/app/models/user.rb:
+   11    devise :database_authenticatable, :registerable,
+   12           :recoverable, :rememberable, :trackable, :validatable,
+   13:          :omniauthable, omniauth_providers: [:facebook]
+   14
+   15      has_many :tattoos, dependent: :destroy
+   ..
+   20
+   21    def self.find_for_facebook_oauth(auth)
+   22:     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+   23:       user.provider = auth.provider
+   24        user.uid = auth.uid
+   25        user.email = auth.info.email
+
+/Users/constantdesfosse/code/constantdesfosse/sorrymummy/app/views/devise/registrations/edit.html.erb:
+    8
+    9          <div class="form-inputs">
+   10:           <%#if current_user.provider != "facebook"%>
+   11            <%= f.input :email, required: true, autofocus: true %>
+   12            <%= f.input :first_name %>
+
+/Users/constantdesfosse/code/constantdesfosse/sorrymummy/app/views/devise/shared/_links.html.erb:
+   20
+   21  <%- if devise_mapping.omniauthable? %>
+   22:   <%- resource_class.omniauth_providers.each do |provider| %>
+   23:     <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+   24    <% end -%>
+   25  <% end -%>
+
+/Users/constantdesfosse/code/constantdesfosse/sorrymummy/app/views/users/index.html.erb:
+    5  <div class="container">
+    6    <% @users.each do |user| %>
+    7:     <%if user.provider != "facebook" %>
+    8        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    9          <div class="tattooists-card">
+   ..
+   30
+   31         handler.buildMap({
+   32:           provider: {
+   33              scrollwheel: false,
+   34              styles: mapStyle
+
+/Users/constantdesfosse/code/constantdesfosse/sorrymummy/config/database.yml:
+   69  # production deployment.
+   70  #
+   71: # On Heroku and other platform providers, you may have a full connection URL
+   72  # available as an environment variable. For example:
+   73  #
+
+/Users/constantdesfosse/code/constantdesfosse/sorrymummy/config/initializers/devise.rb:
+  241
+  242    # ==> OmniAuth
+  243:   # Add a new OmniAuth provider. Check the wiki for more information on setting
+  244    # up on your models and hooks.
+  245    # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+
+/Users/constantdesfosse/code/constantdesfosse/sorrymummy/db/schema.rb:
+   60      t.datetime "created_at",                          null: false
+   61      t.datetime "updated_at",                          null: false
+   62:     t.string   "provider"
+   63      t.string   "uid"
+   64      t.string   "picture"
+
+/Users/constantdesfosse/code/constantdesfosse/sorrymummy/db/migrate/20160608114840_add_omniauth_to_users.rb:
+    1  class AddOmniauthToUsers < ActiveRecord::Migration
+    2    def change
+    3:     add_column :users, :provider, :string
+    4      add_column :users, :uid, :string
+    5      add_column :users, :picture, :string
+
+17 matches across 9 files
+
+
+Searching 138 files for "key="
+
+/Users/constantdesfosse/code/constantdesfosse/sorrymummy/app/views/layouts/application.html.erb:
+   20      <%= javascript_include_tag "application" %>
+   21      <script type="text/javascript"
+   22:     src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAz1k4tpVJ-O-iTuDd8rvBhnqw87n7XAks">
+   23      </script>
+   24
+
+1 match in 1 file
