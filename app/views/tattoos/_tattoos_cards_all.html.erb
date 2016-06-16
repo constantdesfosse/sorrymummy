@@ -3,6 +3,8 @@
           <div class="tattoos-card">
             <div class="tattoos-card-picture" style="background-image: url('<%= cl_image_path tattoo.photo%>')">
               <%= link_to "", tattoo_path(tattoo), class: "tattoos-card-link" %>
+                <div class="testhover">
+                </div>
             </div>
             <div class="tattoos-card-header">
 
@@ -13,13 +15,14 @@
             <%end%>
 
               <p><%=tattoo.created_at.strftime("%m/%d/%Y")%></p>
-              <p><% raw tattoo.tag_list.map { |t| link_to "#" + t, tag_path(t) }.join(' ') %></p>
+              <p><%= raw tattoo.tag_list.map { |t| link_to "#" + t, tag_path(t) }.join(' ') %></p>
             </div>
             <div class="tattoos-card-infos">
               <p><%=tattoo.category%></p>
             </div>
             <div class="tattoos-card-footer">
-              <p><%=tattoo.user.first_name.capitalize + " " + tattoo.user.last_name.upcase %></p>
+              <h5><%=tattoo.user.first_name.capitalize + " " + tattoo.user.last_name.upcase %></h5>
+              <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= tattoo.user.city %></p>
               <div class="tattoos-card-footer-avatar" style="background-image: url('<%= image_path tattoo.user.choosephoto %>')">
               <a href='/users/<%= tattoo.user.id %>'><span class="tattoos-card-link"></span></a>
               </div>
