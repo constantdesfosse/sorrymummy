@@ -33,10 +33,16 @@
               <% end %>
             </li>
             <li>
+              <%= link_to new_tattoo_path do %>
+                <i class="fa fa-tint"></i> <%= t ".profile", default: "Add a Tattoo" %>
+              <% end %>
+            </li>
+            <li>
               <%= link_to edit_user_registration_path(current_user) do %>
                 <i class="fa fa-pencil"></i> <%= t ".profile", default: "Edit Profile" %>
               <% end %>
             </li>
+            <%end%>
             <li>
               <%= link_to users_path do %>
                 <i class="fa fa-users"></i> <%= t ".profile", default: "All Tattooists" %>
@@ -47,12 +53,6 @@
                 <i class="fa fa-tint"></i> <%= t ".profile", default: "All Tattoos" %>
               <% end %>
             </li>
-            <li>
-              <%= link_to new_tattoo_path do %>
-                <i class="fa fa-tint"></i> <%= t ".profile", default: "Add a Tattoo" %>
-              <% end %>
-            </li>
-            <%end%>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
