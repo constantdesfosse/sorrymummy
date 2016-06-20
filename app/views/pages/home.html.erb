@@ -1,3 +1,12 @@
 <div class="home-banner" style="background-image: url(<%= image_path 'bg_header_sum.jpg' %>)">
-<%= image_tag 'logo_white.png' %>
+<div class="home-title">
+  <h5>THE RIGHT</h5>
+  <h1>ARTIST</h1>
+  <h5>FOR THE RIGHT</h5>
+  <h1>TATTOO</h1>
+</div>
+<%= form_tag("/users", method: "get", class: "form-inline") do %>
+  <%= text_field_tag :q, nil, class: 'form-control', placeholder: "Paris", input_html: { id: :user_input_autocomplete_address } %>
+  <%= submit_tag("Search", class: "form_submit btn btn-home")  %>
+<% end %>
 </div>

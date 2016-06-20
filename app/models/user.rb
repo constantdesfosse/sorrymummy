@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   geocoded_by :address
-  before_validation :geocode, if: :address_changed?
+  # before_validation :geocode, if: :address_changed?
   after_validation :geocode, if: :address_changed?
 
   mount_uploader :photo, PhotoUploader
