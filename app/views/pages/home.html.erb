@@ -5,8 +5,10 @@
   <h5>FOR THE RIGHT</h5>
   <h1>TATTOO</h1>
 </div>
-<%= form_tag("/users", method: "get", class: "form-inline") do %>
-  <%= text_field_tag :q, nil, class: 'form-control', placeholder: "Paris", input_html: { id: :user_input_autocomplete_address } %>
+
+<%= form_tag("/users", method: "get", class: "form-inline", html: { method: :put }) do %>
+  <%= text_field_tag :q, nil, class: 'form-control', placeholder: "Paris", id: :user_input_autocomplete_address %>
   <%= submit_tag("Search", class: "form_submit btn btn-home")  %>
 <% end %>
+
 </div>

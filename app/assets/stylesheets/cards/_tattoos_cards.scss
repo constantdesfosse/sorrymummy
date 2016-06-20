@@ -13,7 +13,7 @@
   opacity: 1;
   transition: 0.8s;
   overflow: hidden;
-}
+ }
 
 .tattoos-card-picture {
   width: 100%;
@@ -23,7 +23,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  transition: 0.1s;
+  transition: 1s;
+  // &:hover {
+  //   transform: scale(1.1);
+  // }
 }
 
 .tattoos-card-link {
