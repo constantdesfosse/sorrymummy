@@ -18,8 +18,10 @@ class UsersController < ApplicationController
   def index
       if  params[:q] == ""
         @users = User.all.where(provider: nil).order(created_at: :desc)
+      elsif  params[:q] == nil
+        @users = User.all.where(provider: nil).order(created_at: :desc)
       else
-        @users = User.all.where(provider: nil).order(created_at: :desc).near(params[:q], 20)
+        @users = User.all.where(provider: nil).order(created_at: :desc).near(params[:q], 15)
       end
 
 
