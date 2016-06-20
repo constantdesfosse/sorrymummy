@@ -2,8 +2,13 @@
   <h1>Tattoos(<%= @tattoos.count %>)</h1>
   <div id="tag_cloud">
     <% tag_cloud Tattoo.tag_counts, %w[s m l] do |tag, css_class| %>
-    <%= link_to "#" + tag.name, tag_path(tag.name), class: css_class %>
+    <% link_to "#" + tag.name, tag_path(tag.name), class: css_class %>
     <% end %>
   </div>
+
+  <% if params[:tag] != nil %>
+  <h1>#<%= params[:tag] %></h1>
+  <%end%>
+
       <%= render 'tattoos/tattoos_cards_all' %>
 </div>
