@@ -24,9 +24,7 @@
   top: 0;
   left: 0;
   transition: 1s;
-  // &:hover {
-  //   transform: scale(1.1);
-  // }
+  cursor: pointer;
 }
 
 .tattoos-card-link {
@@ -144,3 +142,33 @@
   display: block;
 }
 
+.modal-body img {
+  width: 100%;
+}
+
+.modal-body {
+  padding: 8px;
+}
+
+
+.modal-footer p {
+  text-align: justify;
+  font-size: 12px;
+}
+
+.modal-footer a {
+  color: #25A998;
+}
+
+.modal-footer i {
+  margin-right: 10px;
+}
+
+
+.modal-content {
+  border-radius: 8px;
+}
+
+.modal-edit {
+text-align: left;
+}
