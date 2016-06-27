@@ -1,32 +1,66 @@
 <% @tattoos.each do |tattoo| %>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="tattoos-card">
-            <div class="tattoos-card-picture" style="background-image: url('<%= cl_image_path tattoo.photo%>')">
-              <%= link_to "", tattoo_path(tattoo), class: "tattoos-card-link" %>
-                <div class="testhover">
-                </div>
+           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="tattoos-card">
+        <div class="tattoos-card-picture" data-toggle="modal" data-target="#my-modal-<%= tattoo.id %>" style="background-image: url('<%= cl_image_path tattoo.photo%>')">
+            <div class="testhover">
             </div>
-            <div class="tattoos-card-header">
+        </div>
+        <div class="tattoos-card-header">
 
-            <% if tattoo.name.chars.count > 25 %>
-              <h3><%=tattoo.name.chars.take(22).join + "..."  %></h3>
-            <% else %>
-            <h3><%=tattoo.name %></h3>
-            <%end%>
+        <% if tattoo.name.chars.count > 25 %>
+          <h3><%=tattoo.name.chars.take(22).join + "..."  %></h3>
+        <% else %>
+        <h3><%=tattoo.name %></h3>
+        <%end%>
 
-              <p><%=tattoo.created_at.strftime("%m/%d/%Y")%></p>
-              <p><%= raw tattoo.tag_list.map { |t| link_to "#" + t, tag_path(t) }.join(' ') %></p>
-            </div>
-            <div class="tattoos-card-infos">
-              <p><%=tattoo.category%></p>
-            </div>
-            <div class="tattoos-card-footer">
-              <h5><%=tattoo.user.first_name.capitalize + " " + tattoo.user.last_name.upcase %></h5>
-              <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= tattoo.user.city %></p>
-              <div class="tattoos-card-footer-avatar" style="background-image: url('<%= image_path tattoo.user.choosephoto %>')">
-              <a href='/users/<%= tattoo.user.id %>'><span class="tattoos-card-link"></span></a>
-              </div>
-            </div>
+          <p><%=tattoo.created_at.strftime("%m/%d/%Y")%></p>
+          <p><%=raw tattoo.tag_list.take(3).map { |t| link_to "#" + t, tag_path(t) }.join(' ') %></p>
+        </div>
+        <div class="tattoos-card-infos">
+          <p><%=tattoo.category%></p>
+        </div>
+        <div class="tattoos-card-footer">
+          <h5><%=tattoo.user.first_name.capitalize + " " + tattoo.user.last_name.upcase %></h5>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= tattoo.user.city %></p>
+          <div class="tattoos-card-footer-avatar" style="background-image: url('<%= image_path tattoo.user.choosephoto %>')">
+          <a href='/users/<%= tattoo.user.id %>'><span class="tattoos-card-link"></span></a>
           </div>
         </div>
-      <% end %>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="my-modal-<%=tattoo.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><%= tattoo.name%> by <%=tattoo.user.first_name.capitalize + " " + tattoo.user.last_name.upcase %></h4>
+          </div>
+
+          <div class="modal-body">
+            <%= cl_image_tag tattoo.photo %>
+          </div>
+          <div class="modal-footer">
+          <% if tattoo.description == "" %>
+           <p>No description yet.</p>
+           <%end%>
+            <p><%=tattoo.description%></p>
+            <p><%=raw tattoo.tag_list.map { |t| link_to "#" + t, tag_path(t) }.join(' ') %></p>
+             <div class="modal-edit">
+            <% if current_user == tattoo.user %>
+              <%= link_to edit_tattoo_path(tattoo) do %>
+              <i class="fa fa-pencil" aria-hidden="true" style="color:#272822"></i>
+              <% end %>
+              <%= link_to tattoo_path(tattoo), method: :delete, data: {confirm: "Are you sure?"} do %>
+              <i class="fa fa-trash" aria-hidden="true" style="color:#272822"></i>
+              <% end %>
+          <% end %>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIN Modal -->
+  <% end %>
