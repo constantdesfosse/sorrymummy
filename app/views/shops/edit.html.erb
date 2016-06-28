@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row" style="margin-top: 15px">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <% if @shop.errors.any? %>
+        <ul>
+          <%@shop.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <%= simple_form_for @shop do |f| %>
+        <%= f.input :name, label: "Enter the name of your shop", input_html: { placeholder: "Sorry Mummy Tattoo Shop" } %>
+        <%= f.input :description, label: "Please give a detailed description of your shop", input_html: { placeholder: "A nice place for your tattoos..." } %>
+        <%= f.input :phone %>
+        <%= f.input :address, input_html: { id: :user_input_autocomplete_address } %>
+        <%= f.input :picture_profile, label: "Profil picture of your shop" %>
+        <%= f.input :picture_profile_cache, as: :hidden %>
+        <%= f.input :picture_banner, label: "Banner picture of your shop" %>
+        <%= f.input :picture_banner_cache, as: :hidden %>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

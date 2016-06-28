@@ -37,6 +37,11 @@
                 <i class="fa fa-tint"></i> <%= t ".profile", default: "Add a Tattoo" %>
               <% end %>
             </li>
+            <li>
+              <%= link_to new_shop_path do %>
+                <i class="fa fa-university"></i> <%= t ".profile", default: "Create your Shop" %>
+              <% end %>
+            </li>
             <%end%>
             <li>
               <%= link_to edit_user_registration_path(current_user) do %>
