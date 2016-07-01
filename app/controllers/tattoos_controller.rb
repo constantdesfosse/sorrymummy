@@ -15,7 +15,7 @@ class TattoosController < ApplicationController
     @tattoo = Tattoo.new(tattoo_params)
     @tattoo.user_id = current_user.id
     if @tattoo.save
-      redirect_to tattoo_path(@tattoo)
+      redirect_to current_user
     else
       render :new
     end
@@ -37,7 +37,7 @@ class TattoosController < ApplicationController
   def destroy
     @tattoo = Tattoo.find(params[:id])
     @tattoo.destroy
-    redirect_to tattoos_path
+    redirect_to current_user
   end
 
   private
