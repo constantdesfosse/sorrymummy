@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations", omniauth_callbacks: 'users/omniauth_callbacks'}
   resources :users, only: [:show, :index]
   resources :tattoos
+  resources :shops
 
   root to: 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.

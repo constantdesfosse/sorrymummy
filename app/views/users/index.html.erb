@@ -1,5 +1,5 @@
 <div class="index-tattooist-banner">
-  <h1>All Tattooists</h1>
+  <h1>Tattooists <% if params[:q] != nil %> <%= 'in ' + params[:q] %><%end%></h1>
 </div>
 <div id="map-tattooist" style="width: 100%; height: 500px;"></div>
 <div class="container">
@@ -13,6 +13,7 @@
           </div>
           <div class="tattooists-card-info">
             <h5><%= user.first_name.capitalize + " " + user.last_name.upcase %></h5>
+            <p>Tattoos : <%= user.tattoos.count %></p>
             <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= user.city %></p>
           </div>
           <%= link_to "", user_path(user), class: "tattoos-card-link" %>
