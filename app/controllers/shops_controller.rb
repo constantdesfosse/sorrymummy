@@ -2,10 +2,29 @@ class ShopsController < ApplicationController
 
   def index
     @shops = Shop.all
+
+    if  params[:q] == ""
+        @shops = Shop.all.order(created_at: :desc)
+      elsif  params[:q] == nil
+        @shops = Shop.all.order(created_at: :desc)
+      else
+        @shops = Shop.all.order(created_at: :desc).near(params[:q], 15)
+      end
+
+    @hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
+        marker.lat shop.latitude
+        marker.lng shop.longitude
+        marker.infowindow shop.name
+      end
   end
 
   def new
-    @shop = Shop.new
+    @user = current_user
+    if @user.shop != nil
+      redirect_to root_path
+    else
+      @shop = Shop.new
+    end
   end
 
   def create

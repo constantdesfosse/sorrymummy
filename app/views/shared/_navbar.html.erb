@@ -38,14 +38,27 @@
               <% end %>
             </li>
             <li>
+            <% if current_user.shop != nil %>
+              <%= link_to edit_shop_path(current_user.shop) do %>
+                <i class="fa fa-university"></i> <%= t ".profile", default: "Edit your Shop" %>
+              <% end %>
+              <%else%>
               <%= link_to new_shop_path do %>
                 <i class="fa fa-university"></i> <%= t ".profile", default: "Create your Shop" %>
               <% end %>
+              <%end%>
             </li>
-            <%end%>
-            <li>
+             <li>
               <%= link_to edit_user_registration_path(current_user) do %>
                 <i class="fa fa-pencil"></i> <%= t ".profile", default: "Edit Profile" %>
+              <% end %>
+            </li>
+
+            <%end%>
+
+            <li>
+              <%= link_to shops_path do %>
+                <i class="fa fa-users"></i> <%= t ".profile", default: "All Shops" %>
               <% end %>
             </li>
             <li>
@@ -66,7 +79,6 @@
           </ul>
         </div>
       </div>
-
     <% else %>
 
       <!-- Login text link -->

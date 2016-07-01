@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:facebook]
 
     has_many :tattoos, dependent: :destroy
-    has_many :shops, dependent: :destroy
+    has_one :shop, dependent: :destroy
 
     validates :first_name, presence: true
     validates :last_name, presence: true

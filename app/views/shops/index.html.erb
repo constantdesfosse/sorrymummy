@@ -1,0 +1,48 @@
+<div class="index-tattooist-banner">
+  <h1>All Shops</h1>
+</div>
+</div>
+<div id="map-shop" style="width: 100%; height: 500px;"></div>
+<div class="container">
+  <div class="search-shops">
+    <%= form_tag("/shops", method: "get", class: "form-inline", html: { method: :put }) do %>
+      <%= text_field_tag :q, nil, class: 'form-control', placeholder: "Paris", id: :user_input_autocomplete_address %>
+      <%= submit_tag("Search", class: "form_submit btn btn-home")  %>
+    <% end %>
+  </div>
+  <% @shops.each do |shop| %>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="shops-card">
+          <div class="shops-card-avatar" style="background-image: url('<%= image_path shop.picture_profile %>')">
+            <% if shop.picture_profile == nil  %>
+              <%= shop.name %>
+            <%end%>
+          </div>
+          <div class="shops-card-info">
+            <h5><%= shop.name.capitalize %></h5>
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i><%= shop.address %></p>
+          </div>
+          <%= link_to "", shop_path(shop), class: "tattoos-card-link" %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).on('ready', function() {
+      handler = Gmaps.build('Google');
+
+       handler.buildMap({
+          provider: {
+            scrollwheel: false,
+            styles: mapStyle
+          },
+          internal: { id: 'map-shop' } }, function(){
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
+      })
+  </script>
+<% end %>

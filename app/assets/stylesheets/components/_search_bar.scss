@@ -71,3 +71,21 @@
   }
 }
 
+.search-shops #user_input_autocomplete_address {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    height: 50px;
+    width: 50%;
+    border: white;
+    background-color: white;
+    color: #25AA99;
+    box-shadow: none;
+    @media (max-width: 768px) {
+      width: 70%;
+  }
+   @media (max-width: 375px) {
+      width: 70%;
+  }
+}
