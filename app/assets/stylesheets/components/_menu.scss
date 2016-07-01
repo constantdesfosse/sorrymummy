@@ -1,0 +1,23 @@
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  margin-top: -70px;
+  background-color: #25AA99;
+  & a {
+    color: white;
+    transition: 0.2s;
+    &:hover {
+      color: #272822;
+    }
+  }
+  & i {
+    font-size: 20px;
+  }
+}
+
+.nav > li > a:hover {
+  background-color: rgba(0,0,0,0);
+}

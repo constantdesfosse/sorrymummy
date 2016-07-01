@@ -1,5 +1,5 @@
 <div class="index-tattooist-banner">
-  <h1>All Shops</h1>
+  <h1>Shops <% if params[:q] != nil %> <%= 'in ' + params[:q] %><%end%></h1>
 </div>
 </div>
 <div id="map-shop" style="width: 100%; height: 500px;"></div>

@@ -1,0 +1,31 @@
+<div class="menu">
+  <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"> -->
+    <ul class="nav nav-pills">
+    <li>
+      <%= link_to "/" do %>
+        <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to tattoos_path do %>
+        <i class="fa fa-tint"></i> <%= t ".", default: "Tattoos" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to users_path do %>
+        <i class="fa fa-users"></i> <%= t ".", default: "Tattooists" %>
+      <% end %>
+    </li>
+      <li>
+      <%= link_to shops_path do %>
+        <i class="fa fa-university"></i> <%= t ".", default: "Shops" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to tattoos_path do %>
+        <i class="fa fa-calendar"></i> <%= t ".", default: "Conventions" %>
+      <% end %>
+    </li>
+    </ul>
+  <!-- </div> -->
+</div>
