@@ -12,8 +12,7 @@ class TattoosController < ApplicationController
     @tattoo = Tattoo.new
   end
   def create
-    @tattoo = Tattoo.new(tattoo_params)
-    @tattoo.user_id = current_user.id
+    @tattoo = Tattoo.new(tattoo_params.merge(user: current_user))
     if @tattoo.save
       redirect_to current_user
     else

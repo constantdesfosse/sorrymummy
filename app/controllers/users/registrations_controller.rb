@@ -13,8 +13,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up).push(:first_name, :last_name, :photo, :photo_cache, :banneruser, :banneruser_cache, :address, :city, :country)
-    devise_parameter_sanitizer.for(:account_update).push(:first_name, :last_name, :photo, :photo_cache, :banneruser, :banneruser_cache, :address, :city, :country)
+    devise_parameter_sanitizer.for(:sign_up).push(:first_name, :last_name, :photo, :photo_cache, :banneruser, :banneruser_cache, :address, :city, :country, :description)
+    devise_parameter_sanitizer.for(:account_update).push(:first_name, :last_name, :photo, :photo_cache, :banneruser, :banneruser_cache, :address, :city, :country, :description)
   end
 end
 

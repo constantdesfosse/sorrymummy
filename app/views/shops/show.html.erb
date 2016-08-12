@@ -1,10 +1,11 @@
-<div>
+<div class="container">
+<div class="tattooist-banner" style="background-image: url('<%= image_path @shop.picture_banner %>')">
+  </div>
   <h1><%= @shop.name %></h1>
   <p><%= @shop.description %></p>
   <p><%= @shop.phone %></p>
   <%= cl_image_tag @shop.picture_profile %>
-  <%= cl_image_tag @shop.picture_banner %>
-  </div>
+</div>
 <% if @shop.user == current_user %>
 <button><%= link_to 'Edit', edit_shop_path(@shop)%></button>
 <button><%= link_to 'Delete', shop_path(@shop), method: :delete, data: {confirm: "Are you sure?"}  %></button>
